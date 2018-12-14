@@ -1,28 +1,43 @@
+:root {
+    --sideNum: 16;
+}
+
 body {
     background: red;
     margin: 0;
-}
-
-
-#header {
-    
 }
 
 #container {
     width: 500px;
     height: 500px;
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(var(--sideNum), 1fr);
+    grid-template-rows: repeat(var(--sideNum), 1fr);
     background: rgb(226, 223, 223)
 }
 
 .squareDiv {
     height: 100%;
     width: 100%;
-    border: 1px solid black;
 }
 
 .trail {
     background: rgb(92, 91, 91)
+}
+
+#header {
+    color: goldenrod;
+    font-style: bold;
+    font-size: 50px;
+    padding-left: 110px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+#etch {
+    font-family: 
+}
+
+#magic-screen {
+
 }

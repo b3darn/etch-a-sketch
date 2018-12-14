@@ -1,34 +1,39 @@
 const container = document.querySelector('#container');
 
+let totalSquares = 256;
+
+
 function createDivs() {
-    for (var i = 0; i < 256; i++) {
+    for (var i = 0; i < totalSquares; i++) {
         let div = document.createElement('div'); 
         div.setAttribute("class", "squareDiv");
         container.appendChild(div);
-
     }
+    let squareDiv = document.querySelectorAll(".squareDiv");
+
+    squareDiv.forEach((squareDiv) => {
+        squareDiv.addEventListener('mouseover', () => {
+            squareDiv.setAttribute('class', 'trail');
+        });
+    });
 }
+
 createDivs();
 
-let squareDiv = document.querySelectorAll(".squareDiv")
+let startOverButton = document.querySelectorAll('#start');
 
-squareDiv.forEach((squareDiv) => {
-    squareDiv.addEventListener('mouseover', () => {
-        squareDiv.setAttribute('class', 'trail');
-    });
-    });
-
-function customGrid() {
-
-}
-
-let button = document.querySelectorAll("button") 
-
-button.forEach((button) => {
+startOverButton.forEach((button) => {
     button.addEventListener('click', () => {
-        console.log(squareDiv);
-        squareDiv.forEach((squareDiv) => {
-            squareDiv.setAttribute('class', 'squareDiv')});
+        while (container.hasChildNodes()) {
+            container.removeChild(container.lastChild);
+        };
         customGrid();
         });
         });
+
+function customGrid() {
+    let squarePerSide = prompt('How many squares per side?', 16);
+    document.documentElement.style.setProperty("--sideNum", squarePerSide);
+    totalSquares = squarePerSide * squarePerSide;
+    createDivs();
+}
